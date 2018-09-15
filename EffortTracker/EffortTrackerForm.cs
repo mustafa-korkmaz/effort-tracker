@@ -160,6 +160,28 @@ namespace EffortTracker
             var jsonText = JsonConvert.SerializeObject(_jsonRoot);
             File.WriteAllText(_jsonFilePath, jsonText);
         }
+
+        private void EffortTrackerForm_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                notify_icon.Visible = true;
+               // notify_icon.ShowBalloonTip(500);
+                Hide();
+            }
+
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notify_icon.Visible = false;
+            }
+        }
+
+        private void notify_icon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notify_icon.Visible = false;
+        }
     }
 }
 

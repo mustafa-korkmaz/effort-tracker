@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EffortTrackerForm));
             this.lbl_task_name_title = new System.Windows.Forms.Label();
             this.btn_start = new System.Windows.Forms.Button();
             this.cmb_projects = new System.Windows.Forms.ComboBox();
@@ -42,6 +44,7 @@
             this.lbl_work_days = new System.Windows.Forms.Label();
             this.lbl_task_start_date_title = new System.Windows.Forms.Label();
             this.lbl_task_start_date = new System.Windows.Forms.Label();
+            this.notify_icon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // lbl_task_name_title
@@ -187,6 +190,13 @@
             this.lbl_task_start_date.TabIndex = 13;
             this.lbl_task_start_date.Text = "01.01.1900";
             // 
+            // notify_icon
+            // 
+            this.notify_icon.Icon = ((System.Drawing.Icon)(resources.GetObject("notify_icon.Icon")));
+            this.notify_icon.Text = "Effort Tracker";
+            this.notify_icon.Visible = true;
+            this.notify_icon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notify_icon_MouseDoubleClick);
+            // 
             // EffortTrackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +218,7 @@
             this.Controls.Add(this.lbl_task_name_title);
             this.Name = "EffortTrackerForm";
             this.Text = "Effort Tracker";
+            this.Resize += new System.EventHandler(this.EffortTrackerForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,6 +240,7 @@
         private System.Windows.Forms.Label lbl_work_days;
         private System.Windows.Forms.Label lbl_task_start_date_title;
         private System.Windows.Forms.Label lbl_task_start_date;
+        private System.Windows.Forms.NotifyIcon notify_icon;
     }
 }
 
