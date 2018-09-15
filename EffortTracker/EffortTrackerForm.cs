@@ -76,9 +76,9 @@ namespace EffortTracker
 
             UpdateTaskStatistics();
 
-            GetTaskStatistics();
-
             UpdateJsonFile();
+
+            GetTaskStatistics();
 
             FillProjects(); // refresh
         }
