@@ -1,0 +1,36 @@
+﻿{
+  "ProjectTasks": [
+    {
+      "Id": 1,
+      "Name": "Sample Project Task 1",
+      "WorkDaysElapsed": 2,
+      "TotalDaysElapsed": 12,
+      "TotalMinsElapsed": 100,
+      "LastWorkStartDateTime": "10.08.2018 23:44"
+    },
+    {
+      "Id": 2,
+      "Name": "Sample Project Task 2",
+      "WorkDaysElapsed": 5,
+      "TotalDaysElapsed": 10,
+      "TotalMinsElapsed": 900,
+      "LastWorkStartDateTime": "10.09.2018 03:44"
+    },
+    {
+      "Id": 3,
+      "Name": "Sample Project Task 3",
+      "WorkDaysElapsed": 1,
+      "TotalDaysElapsed": 2,
+      "TotalMinsElapsed": 120,
+      "LastWorkStartDateTime": "16.07.2018 12:44"
+    },
+    {
+      "Id": 4,
+      "Name": "Sample Project Task 4",
+      "WorkDaysElapsed": 1,
+      "TotalDaysElapsed": 1,
+      "TotalMinsElapsed": 10,
+      "LastWorkStartDateTime": "17.09.2018 00:44"
+    }
+  ]
+}
