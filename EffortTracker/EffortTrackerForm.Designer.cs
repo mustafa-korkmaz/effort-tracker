@@ -40,6 +40,8 @@
             this.lbl_time = new System.Windows.Forms.Label();
             this.lbl_work_days_title = new System.Windows.Forms.Label();
             this.lbl_work_days = new System.Windows.Forms.Label();
+            this.lbl_task_start_date_title = new System.Windows.Forms.Label();
+            this.lbl_task_start_date = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_task_name_title
@@ -84,7 +86,7 @@
             // 
             this.lbl_status_title.AutoSize = true;
             this.lbl_status_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status_title.Location = new System.Drawing.Point(312, 166);
+            this.lbl_status_title.Location = new System.Drawing.Point(312, 181);
             this.lbl_status_title.Name = "lbl_status_title";
             this.lbl_status_title.Size = new System.Drawing.Size(132, 24);
             this.lbl_status_title.TabIndex = 4;
@@ -95,7 +97,7 @@
             this.lbl_status.AutoSize = true;
             this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_status.ForeColor = System.Drawing.Color.Red;
-            this.lbl_status.Location = new System.Drawing.Point(450, 166);
+            this.lbl_status.Location = new System.Drawing.Point(450, 181);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(109, 24);
             this.lbl_status.TabIndex = 5;
@@ -105,7 +107,7 @@
             // 
             this.lbl_days_title.AutoSize = true;
             this.lbl_days_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_days_title.Location = new System.Drawing.Point(312, 206);
+            this.lbl_days_title.Location = new System.Drawing.Point(312, 223);
             this.lbl_days_title.Name = "lbl_days_title";
             this.lbl_days_title.Size = new System.Drawing.Size(176, 24);
             this.lbl_days_title.TabIndex = 6;
@@ -115,7 +117,7 @@
             // 
             this.lbl_mins_title.AutoSize = true;
             this.lbl_mins_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mins_title.Location = new System.Drawing.Point(314, 295);
+            this.lbl_mins_title.Location = new System.Drawing.Point(314, 310);
             this.lbl_mins_title.Name = "lbl_mins_title";
             this.lbl_mins_title.Size = new System.Drawing.Size(181, 24);
             this.lbl_mins_title.TabIndex = 7;
@@ -126,7 +128,7 @@
             this.lbl_days.AutoSize = true;
             this.lbl_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_days.ForeColor = System.Drawing.Color.Orange;
-            this.lbl_days.Location = new System.Drawing.Point(494, 204);
+            this.lbl_days.Location = new System.Drawing.Point(494, 221);
             this.lbl_days.Name = "lbl_days";
             this.lbl_days.Size = new System.Drawing.Size(20, 24);
             this.lbl_days.TabIndex = 8;
@@ -137,7 +139,7 @@
             this.lbl_time.AutoSize = true;
             this.lbl_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_time.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbl_time.Location = new System.Drawing.Point(493, 295);
+            this.lbl_time.Location = new System.Drawing.Point(493, 310);
             this.lbl_time.Name = "lbl_time";
             this.lbl_time.Size = new System.Drawing.Size(20, 24);
             this.lbl_time.TabIndex = 9;
@@ -147,7 +149,7 @@
             // 
             this.lbl_work_days_title.AutoSize = true;
             this.lbl_work_days_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_work_days_title.Location = new System.Drawing.Point(314, 249);
+            this.lbl_work_days_title.Location = new System.Drawing.Point(314, 266);
             this.lbl_work_days_title.Name = "lbl_work_days_title";
             this.lbl_work_days_title.Size = new System.Drawing.Size(179, 24);
             this.lbl_work_days_title.TabIndex = 10;
@@ -158,17 +160,40 @@
             this.lbl_work_days.AutoSize = true;
             this.lbl_work_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_work_days.ForeColor = System.Drawing.Color.RosyBrown;
-            this.lbl_work_days.Location = new System.Drawing.Point(497, 249);
+            this.lbl_work_days.Location = new System.Drawing.Point(497, 266);
             this.lbl_work_days.Name = "lbl_work_days";
             this.lbl_work_days.Size = new System.Drawing.Size(20, 24);
             this.lbl_work_days.TabIndex = 11;
             this.lbl_work_days.Text = "0";
+            // 
+            // lbl_task_start_date_title
+            // 
+            this.lbl_task_start_date_title.AutoSize = true;
+            this.lbl_task_start_date_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_task_start_date_title.Location = new System.Drawing.Point(314, 140);
+            this.lbl_task_start_date_title.Name = "lbl_task_start_date_title";
+            this.lbl_task_start_date_title.Size = new System.Drawing.Size(139, 24);
+            this.lbl_task_start_date_title.TabIndex = 12;
+            this.lbl_task_start_date_title.Text = "Task Start Date:";
+            // 
+            // lbl_task_start_date
+            // 
+            this.lbl_task_start_date.AutoSize = true;
+            this.lbl_task_start_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_task_start_date.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_task_start_date.Location = new System.Drawing.Point(452, 140);
+            this.lbl_task_start_date.Name = "lbl_task_start_date";
+            this.lbl_task_start_date.Size = new System.Drawing.Size(100, 24);
+            this.lbl_task_start_date.TabIndex = 13;
+            this.lbl_task_start_date.Text = "01.01.1900";
             // 
             // EffortTrackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_task_start_date);
+            this.Controls.Add(this.lbl_task_start_date_title);
             this.Controls.Add(this.lbl_work_days);
             this.Controls.Add(this.lbl_work_days_title);
             this.Controls.Add(this.lbl_time);
@@ -202,6 +227,8 @@
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.Label lbl_work_days_title;
         private System.Windows.Forms.Label lbl_work_days;
+        private System.Windows.Forms.Label lbl_task_start_date_title;
+        private System.Windows.Forms.Label lbl_task_start_date;
     }
 }
 

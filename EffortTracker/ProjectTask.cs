@@ -16,7 +16,7 @@ namespace EffortTracker
 
         public string Name { get; set; }
 
-        public int TotalDaysElapsed { get; set; }
+        public string TaskStartDate { get; set; }
 
         public int TotalMinsElapsed { get; set; }
 
@@ -25,6 +25,9 @@ namespace EffortTracker
         public string LastWorkStartDateTime { get; set; }
 
         public ProjectStatus Status { get; set; }
+
+        [JsonIgnore]
+        public int TotalDaysElapsed => (DateTime.UtcNow - TaskStartDate.ToDate()).Days;
 
         [JsonIgnore]
         public DateTime CurrentWorkStartDateTime { get; set; }

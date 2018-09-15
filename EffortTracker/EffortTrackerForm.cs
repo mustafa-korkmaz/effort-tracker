@@ -46,10 +46,10 @@ namespace EffortTracker
         {
             _selectedProjectTask = cmb_projects.SelectedItem as ProjectTask;
 
-            GetProjectStatistics();
+            GetTaskStatistics();
         }
 
-        private void GetProjectStatistics()
+        private void GetTaskStatistics()
         {
             if (_selectedProjectTask.Status == ProjectStatus.NotWorking)
             {
@@ -58,6 +58,7 @@ namespace EffortTracker
             else
                 lbl_status.ForeColor = System.Drawing.Color.ForestGreen;
 
+            lbl_task_start_date.Text = _selectedProjectTask.TaskStartDate;
             lbl_days.Text = _selectedProjectTask.TotalDaysElapsed.ToString();
             lbl_work_days.Text = _selectedProjectTask.WorkDaysElapsed.ToString();
             lbl_time.Text = GetTotalTimeElapsedText();
@@ -73,9 +74,9 @@ namespace EffortTracker
 
             _selectedProjectTask.Status = ProjectStatus.NotWorking;
 
-            UpdateProjectStatistics();
+            UpdateTaskStatistics();
 
-            GetProjectStatistics();
+            GetTaskStatistics();
 
             UpdateJsonFile();
 
@@ -118,7 +119,7 @@ namespace EffortTracker
 
             _selectedProjectTask.CurrentWorkStartDateTime = DateTime.UtcNow;
 
-            GetProjectStatistics();
+            GetTaskStatistics();
         }
 
         private string GetTotalTimeElapsedText()
@@ -134,7 +135,7 @@ namespace EffortTracker
             return $"{hourText} hours {minsText} mins";
         }
 
-        private void UpdateProjectStatistics()
+        private void UpdateTaskStatistics()
         {
             var lastWorkStartDate = _selectedProjectTask.LastWorkStartDateTime.ToDateTime();
             var currentWorkStartDate = _selectedProjectTask.CurrentWorkStartDateTime;
@@ -147,7 +148,6 @@ namespace EffortTracker
                 _selectedProjectTask.WorkDaysElapsed += 1;
             }
 
-            _selectedProjectTask.TotalDaysElapsed += tsDays;
             _selectedProjectTask.TotalMinsElapsed += tsMins;
 
             //update last work start date time
