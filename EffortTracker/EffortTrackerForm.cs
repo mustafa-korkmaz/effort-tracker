@@ -141,14 +141,14 @@ namespace EffortTracker
             var currentWorkStartDate = _selectedProjectTask.CurrentWorkStartDateTime;
 
             var tsDays = (DateTime.UtcNow - lastWorkStartDate).Days;
-            var tsMins = (DateTime.UtcNow - currentWorkStartDate).Minutes;
+            var tsMins = (DateTime.UtcNow - currentWorkStartDate).TotalMinutes;
 
             if (tsDays > 0)
             {
                 _selectedProjectTask.WorkDaysElapsed += 1;
             }
 
-            _selectedProjectTask.TotalMinsElapsed += tsMins;
+            _selectedProjectTask.TotalMinsElapsed += Convert.ToInt32(tsMins);
 
             //update last work start date time
             _selectedProjectTask.LastWorkStartDateTime = currentWorkStartDate.ToDateTimeString();
