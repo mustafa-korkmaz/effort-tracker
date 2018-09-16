@@ -45,6 +45,7 @@
             this.lbl_task_start_date_title = new System.Windows.Forms.Label();
             this.lbl_task_start_date = new System.Windows.Forms.Label();
             this.notify_icon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btn_break = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_task_name_title
@@ -197,11 +198,22 @@
             this.notify_icon.Visible = true;
             this.notify_icon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notify_icon_MouseDoubleClick);
             // 
+            // btn_break
+            // 
+            this.btn_break.Location = new System.Drawing.Point(547, 60);
+            this.btn_break.Name = "btn_break";
+            this.btn_break.Size = new System.Drawing.Size(110, 23);
+            this.btn_break.TabIndex = 14;
+            this.btn_break.Text = "Take a break";
+            this.btn_break.UseVisualStyleBackColor = true;
+            this.btn_break.Click += new System.EventHandler(this.btn_break_Click);
+            // 
             // EffortTrackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_break);
             this.Controls.Add(this.lbl_task_start_date);
             this.Controls.Add(this.lbl_task_start_date_title);
             this.Controls.Add(this.lbl_work_days);
@@ -241,6 +253,7 @@
         private System.Windows.Forms.Label lbl_task_start_date_title;
         private System.Windows.Forms.Label lbl_task_start_date;
         private System.Windows.Forms.NotifyIcon notify_icon;
+        private System.Windows.Forms.Button btn_break;
     }
 }
 

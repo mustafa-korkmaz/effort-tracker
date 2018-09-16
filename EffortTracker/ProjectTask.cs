@@ -32,6 +32,12 @@ namespace EffortTracker
         [JsonIgnore]
         public DateTime CurrentWorkStartDateTime { get; set; }
 
+        [JsonIgnore]
+        public int BreakMinsElapsed { get; set; }
+
+        [JsonIgnore]
+        public DateTime BreakStartDateTime { get; set; }
+
         public override string ToString()
         {
             return Name;
@@ -42,6 +48,7 @@ namespace EffortTracker
     public enum ProjectStatus
     {
         NotWorking,
-        Working
+        Working,
+        BreakTime
     }
 }

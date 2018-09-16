@@ -10,7 +10,7 @@ namespace EffortTracker
     {
         private ProjectTask _selectedProjectTask;
         private JsonRoot _jsonRoot;
-        private string _jsonFilePath;
+        private readonly string _jsonFilePath;
 
         public EffortTrackerForm()
         {
@@ -46,17 +46,27 @@ namespace EffortTracker
         {
             _selectedProjectTask = cmb_projects.SelectedItem as ProjectTask;
 
+            _selectedProjectTask.BreakStartDateTime = new DateTime(2000, 1, 1); //assign a default value
+
             GetTaskStatistics();
         }
 
         private void GetTaskStatistics()
         {
-            if (_selectedProjectTask.Status == ProjectStatus.NotWorking)
+            switch (_selectedProjectTask.Status)
             {
-                lbl_status.ForeColor = System.Drawing.Color.Red;
+                case ProjectStatus.NotWorking:
+                    lbl_status.ForeColor = System.Drawing.Color.Red;
+                    break;
+                case ProjectStatus.Working:
+                    lbl_status.ForeColor = System.Drawing.Color.ForestGreen;
+                    break;
+                case ProjectStatus.BreakTime:
+                    lbl_status.ForeColor = System.Drawing.Color.Blue;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            else
-                lbl_status.ForeColor = System.Drawing.Color.ForestGreen;
 
             lbl_task_start_date.Text = _selectedProjectTask.TaskStartDate;
             lbl_days.Text = _selectedProjectTask.TotalDaysElapsed.ToString();
@@ -87,7 +97,7 @@ namespace EffortTracker
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (_selectedProjectTask != null && _selectedProjectTask.Status == ProjectStatus.Working)
+                if (_selectedProjectTask != null && _selectedProjectTask.Status != ProjectStatus.NotWorking)
                 {
                     MessageBox.Show("Cannot exit program while a working project exists.", "Warning",
                         MessageBoxButtons.OK);
@@ -115,9 +125,20 @@ namespace EffortTracker
                 return;
             }
 
-            _selectedProjectTask.Status = ProjectStatus.Working;
+            if (_selectedProjectTask.Status == ProjectStatus.BreakTime)
+            {
+                //calculate break time in minutes
+                var breakStartDate = _selectedProjectTask.BreakStartDateTime;
+                var tsBreakMins = (DateTime.UtcNow - breakStartDate).TotalMinutes;
 
-            _selectedProjectTask.CurrentWorkStartDateTime = DateTime.UtcNow;
+                _selectedProjectTask.BreakMinsElapsed = Convert.ToInt32(tsBreakMins);
+            }
+            else
+            {
+                _selectedProjectTask.CurrentWorkStartDateTime = DateTime.UtcNow;
+            }
+
+            _selectedProjectTask.Status = ProjectStatus.Working;
 
             GetTaskStatistics();
         }
@@ -140,7 +161,7 @@ namespace EffortTracker
             var lastWorkStartDate = _selectedProjectTask.LastWorkStartDateTime.ToDateTime();
             var currentWorkStartDate = _selectedProjectTask.CurrentWorkStartDateTime;
 
-            var tsDays = (DateTime.UtcNow - lastWorkStartDate).Days;
+            var tsDays = (DateTime.UtcNow.Date - lastWorkStartDate.Date).Days;
             var tsMins = (DateTime.UtcNow - currentWorkStartDate).TotalMinutes;
 
             if (tsDays > 0)
@@ -148,11 +169,13 @@ namespace EffortTracker
                 _selectedProjectTask.WorkDaysElapsed += 1;
             }
 
-            _selectedProjectTask.TotalMinsElapsed += Convert.ToInt32(tsMins);
+            _selectedProjectTask.TotalMinsElapsed += Convert.ToInt32(tsMins) - _selectedProjectTask.BreakMinsElapsed;
+
+            //refresh break time
+            _selectedProjectTask.BreakMinsElapsed = 0;
 
             //update last work start date time
             _selectedProjectTask.LastWorkStartDateTime = currentWorkStartDate.ToDateTimeString();
-
         }
 
         private void UpdateJsonFile()
@@ -166,7 +189,7 @@ namespace EffortTracker
             if (FormWindowState.Minimized == this.WindowState)
             {
                 notify_icon.Visible = true;
-               // notify_icon.ShowBalloonTip(500);
+                // notify_icon.ShowBalloonTip(500);
                 Hide();
             }
 
@@ -181,6 +204,20 @@ namespace EffortTracker
             Show();
             this.WindowState = FormWindowState.Normal;
             notify_icon.Visible = false;
+        }
+
+        private void btn_break_Click(object sender, EventArgs e)
+        {
+            if (_selectedProjectTask == null || _selectedProjectTask.Status != ProjectStatus.Working)
+            {
+                return;
+            }
+
+            _selectedProjectTask.Status = ProjectStatus.BreakTime;
+
+            GetTaskStatistics();
+
+            _selectedProjectTask.BreakStartDateTime = DateTime.UtcNow;
         }
     }
 }
