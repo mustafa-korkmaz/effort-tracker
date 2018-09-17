@@ -27,7 +27,7 @@ namespace EffortTracker
         public ProjectStatus Status { get; set; }
 
         [JsonIgnore]
-        public int TotalDaysElapsed => (DateTime.UtcNow - TaskStartDate.ToDate()).Days;
+        public int TotalDaysElapsed => (DateTime.UtcNow - TaskStartDate.ToDate()).Days + 1;
 
         [JsonIgnore]
         public DateTime CurrentWorkStartDateTime { get; set; }
